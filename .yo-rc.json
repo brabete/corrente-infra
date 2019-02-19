@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "corrente",
+      "corrente-auth",
+      "corrente-services"
+    ],
+    "directoryPath": "../",
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "ZjM1YjhhYTA0MWY1Mjg0MDA5OGVjZTAwZDY3ZDk0ZGMyOTc0YmU5NDVmM2RjNGFhN2EwYTA3MTk2MzAzYWEyZDljMWMyMGU2ZjFiNTVkYTI5MWFmMWUxYjk5NDMwN2NkODg4Yg==",
+    "dockerRepositoryName": "",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "LoadBalancer",
+    "monitoring": "elk",
+    "istio": "no",
+    "istioRoute": false
+  }
+}

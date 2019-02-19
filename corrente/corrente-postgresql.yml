@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: corrente-postgresql
+  namespace: default
+  labels:
+    app: corrente-postgresql
+type: Opaque
+data:
+  postgres-password: cGl4MHI4djQ=
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: corrente-postgresql
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: corrente-postgresql
+    spec:
+      volumes:
+      - name: data
+        emptyDir: {}
+      containers:
+      - name: postgres
+        image: postgres:10.4
+        env:
+        - name: POSTGRES_USER
+          value: corrente
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: corrente-postgresql
+              key: postgres-password
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: corrente-postgresql
+  namespace: default
+spec:
+  selector:
+    app: corrente-postgresql
+  ports:
+  - port: 5432

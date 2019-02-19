@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: correnteservices
+  namespace: default
+  labels:
+    app: correnteservices
+spec:
+  selector:
+    app: correnteservices
+  ports:
+  - name: http
+    port: 8081
